@@ -27,10 +27,10 @@ router.get("/candidates", (req, res) => {
 router.get("/candidate/:id", (req, res) => {
   const sql = `SELECT candidates.*, parties.name
                   as party_name
-                  from candidates
+               from candidates
                   LEFT JOIN parties
                   ON candidates.party_id = parties.id
-                  WHERE candidates.id = ?`;
+               WHERE candidates.id = ?`;
 
   const params = [req.params.id];
   db.query(sql, params, (err, row) => {
